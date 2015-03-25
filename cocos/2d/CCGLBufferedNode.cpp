@@ -24,6 +24,22 @@ THE SOFTWARE.
 ****************************************************************************/
 
 #include "CCGLBufferedNode.h"
+class PhysicsWorldCallback
+{
+public:
+    static int collisionBeginCallbackFunc(cpArbiter *arb, struct cpSpace *space, PhysicsWorld *world);
+    static int collisionPreSolveCallbackFunc(cpArbiter *arb, cpSpace *space, PhysicsWorld *world);
+    static void collisionPostSolveCallbackFunc(cpArbiter *arb, cpSpace *space, PhysicsWorld *world);
+    static void collisionSeparateCallbackFunc(cpArbiter *arb, cpSpace *space, PhysicsWorld *world);
+    static void rayCastCallbackFunc(cpShape *shape, cpFloat t, cpVect n, RayCastCallbackInfo *info);
+    static void queryRectCallbackFunc(cpShape *shape, RectQueryCallbackInfo *info);
+    static void queryPointFunc(cpShape *shape, cpFloat distance, cpVect point, PointQueryCallbackInfo *info);
+    static void getShapesAtPointFunc(cpShape *shape, cpFloat distance, cpVect point, Vector<PhysicsShape*>* arr);
+    
+public:
+    static bool continues;
+};
+
 
 GLBufferedNode::GLBufferedNode()
 {
